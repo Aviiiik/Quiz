@@ -1,0 +1,73 @@
+Lock-Based Protocol
+In this type of protocol, any transaction cannot read or write data until it acquires an appropriate lock on it. There are two types of lock:
+
+1. Shared lock:
+
+It is also known as a Read-only lock. In a shared lock, the data item can only read by the transaction.
+It can be shared between the transactions because when the transaction holds a lock, then it can't update the data on the data item.
+
+2. Exclusive lock:
+
+In the exclusive lock, the data item can be both reads as well as written by the transaction.
+This lock is exclusive, and in this lock, multiple transactions do not modify the same data simultaneously.
+
+types of lock protocols available:
+1. Simplistic lock protocol
+2. Pre-claiming Lock Protocol
+3. Two-phase locking (2PL)
+
+A transaction is said to follow the Two-Phase Locking protocol if Locking and Unlocking can be done in two phases.
+
+Growing Phase: New locks on data items may be acquired but none can be released.
+Shrinking Phase: Existing locks may be released but no new locks can be acquired.
+
+The Two-Phase Locking (2PL) protocol is a concurrency control method used in database management systems to ensure transaction serializability. It's designed to manage access to shared resources and ensure that transactions do not interfere with each other. Variations of the 2PL protocol have been developed to address specific requirements and challenges in different scenarios. Here are some variations of the 2PL protocol:
+
+Basic Two-Phase Locking (Strict 2PL):
+-----------
+This is the simplest form of the 2PL protocol.
+Transactions acquire locks as needed during their execution phase and release locks only after the transaction has been completed.
+
+Rigorous Two-Phase Locking (Rigorous 2PL):
+-----------
+In this variation, transactions must acquire all the locks they will need for the entire duration of their execution phase at the beginning of the transaction.
+Locks are not released until the transaction is complete.
+This approach reduces the possibility of deadlocks but can lead to higher contention for resources.
+
+Conservative Two-Phase Locking (Conservative 2PL):
+-----------
+A more relaxed version of 2PL, this approach allows a transaction to release locks before it reaches its end, potentially improving concurrency.
+Transactions release locks when they no longer need them, reducing contention for resources.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Certainly, here's a comparison between NoSQL and traditional databases presented in a table format:
+
+| Aspect                            | NoSQL Databases                                                                                                            | Traditional Relational Databases     |
+|-----------------------------------|-------------------------------------------|------------------------------------|
+| **Data Model**                    | Support various data models (document, key-value, column-family, graph).                                      | Follow a structured, fixed-schema tabular model. |
+| **Schema Flexibility**            | Schema-flexible or schema-less, enabling dynamic data structure changes.                                      | Enforce a fixed schema, making changes more challenging. |
+| **Scalability**                   | Designed for horizontal scalability, easily distributing data across nodes.                                   | Typically scale vertically, adding more resources to a single server. |
+| **Data Relationships**            | Handle various relationships but may not enforce relationships through foreign keys.                          | Excel at handling complex relationships, enforce referential integrity. |
+| **Query Language**                | Database-specific query languages tailored to data models (e.g., MongoDB Query Language).                     | Use standardized SQL as the querying language. |
+| **Performance**                   | Offer high performance, optimized for specific use cases (e.g., read-heavy, write-heavy).                     | Provide high performance, especially for transactional operations. |
+| **Complexity and Overhead**       | Easier setup and management with less administrative overhead. Well-suited for agile development.             | May involve more complex administration, schema definition, query optimization. |
+| **Consistency Models**            | Prioritize BASE (Basically Available, Soft state, Eventually consistent) models.                              | Adhere to ACID (Atomicity, Consistency, Isolation, Durability) models. |
+
+
+
+
+
+NoSQL is a type of database management system (DBMS) that is designed to handle and store large volumes of unstructured and semi-structured data. Unlike traditional relational databases that use tables with pre-defined schemas to store data, NoSQL databases use flexible data models that can adapt to changes in data structures and are capable of scaling horizontally to handle growing amounts of data.
+
+The term NoSQL originally referred to “non-SQL” or “non-relational” databases, but the term has since evolved to mean “not only SQL,” as NoSQL databases have expanded to include a wide range of different database architectures and data models.
+
+NoSQL databases are generally classified into four main categories:
+Document databases: These databases store data as semi-structured documents, such as JSON or XML, and can be queried using document-oriented query languages.
+Key-value stores: These databases store data as key-value pairs, and are optimized for simple and fast read/write operations.
+Column-family stores: These databases store data as column families, which are sets of columns that are treated as a single entity. They are optimized for fast and efficient querying of large amounts of data.
+Graph databases: These databases store data as nodes and edges, and are designed to handle complex relationships between data.
+NoSQL databases are often used in applications where there is a high volume of data that needs to be processed and analyzed in real-time, such as social media analytics, e-commerce, and gaming. They can also be used for other applications, such as content management systems, document management, and customer relationship management.
+
+However, NoSQL databases may not be suitable for all applications, as they may not provide the same level of data consistency and transactional guarantees as traditional relational databases. It is important to carefully evaluate the specific needs of an application when choosing a database management system.
+
